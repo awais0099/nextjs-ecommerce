@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
-const Mugs: React.FC = () => {
+const Stickers: React.FC = () => {
 	return (
 	  <>
 		<section className="text-gray-600 body-font">
@@ -14,7 +14,7 @@ const Mugs: React.FC = () => {
 					<img
 					  alt="ecommerce"
 					  className="object-cover object-center w-full h-full block"
-					  src="https://m.media-amazon.com/images/I/619ClZJd1aL._SX466_.jpg" />
+					  src="https://m.media-amazon.com/images/I/91SL25WdgyS._AC_SX569_.jpg" />
 				  </div>
 				  <div className="mt-4">
 					<h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
@@ -31,7 +31,7 @@ const Mugs: React.FC = () => {
 					<img
 					  alt="ecommerce"
 					  className="object-cover object-center w-full h-full block"
-					  src="https://m.media-amazon.com/images/I/619ClZJd1aL._SX466_.jpg" />
+					  src="https://m.media-amazon.com/images/I/91SL25WdgyS._AC_SX569_.jpg" />
 				  </div>
 				  <div className="mt-4">
 					<h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
@@ -48,7 +48,7 @@ const Mugs: React.FC = () => {
 					<img
 					  alt="ecommerce"
 					  className="object-cover object-center w-full h-full block"
-					  src="https://m.media-amazon.com/images/I/619ClZJd1aL._SX466_.jpg" />
+					  src="https://m.media-amazon.com/images/I/91SL25WdgyS._AC_SX569_.jpg" />
 				  </div>
 				  <div className="mt-4">
 					<h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
@@ -65,7 +65,7 @@ const Mugs: React.FC = () => {
 					<img
 					  alt="ecommerce"
 					  className="object-cover object-center w-full h-full block"
-					  src="https://m.media-amazon.com/images/I/619ClZJd1aL._SX466_.jpg" />
+					  src="https://m.media-amazon.com/images/I/91SL25WdgyS._AC_SX569_.jpg" />
 				  </div>
 				  <div className="mt-4">
 					<h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
@@ -82,7 +82,7 @@ const Mugs: React.FC = () => {
 					<img
 					  alt="ecommerce"
 					  className="object-cover object-center w-full h-full block"
-					  src="https://m.media-amazon.com/images/I/619ClZJd1aL._SX466_.jpg" />
+					  src="https://m.media-amazon.com/images/I/91SL25WdgyS._AC_SX569_.jpg" />
 				  </div>
 				  <div className="mt-4">
 					<h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
@@ -99,7 +99,7 @@ const Mugs: React.FC = () => {
 					<img
 					  alt="ecommerce"
 					  className="object-cover object-center w-full h-full block"
-					  src="https://m.media-amazon.com/images/I/619ClZJd1aL._SX466_.jpg" />
+					  src="https://m.media-amazon.com/images/I/91SL25WdgyS._AC_SX569_.jpg" />
 				  </div>
 				  <div className="mt-4">
 					<h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
@@ -116,7 +116,7 @@ const Mugs: React.FC = () => {
 					<img
 					  alt="ecommerce"
 					  className="object-cover object-center w-full h-full block"
-					  src="https://m.media-amazon.com/images/I/619ClZJd1aL._SX466_.jpg" />
+					  src="https://m.media-amazon.com/images/I/91SL25WdgyS._AC_SX569_.jpg" />
 				  </div>
 				  <div className="mt-4">
 					<h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
@@ -133,7 +133,7 @@ const Mugs: React.FC = () => {
 					<img
 					  alt="ecommerce"
 					  className="object-cover object-center w-full h-full block"
-					  src="https://m.media-amazon.com/images/I/619ClZJd1aL._SX466_.jpg" />
+					  src="https://m.media-amazon.com/images/I/91SL25WdgyS._AC_SX569_.jpg" />
 				  </div>
 				  <div className="mt-4">
 					<h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
@@ -150,7 +150,7 @@ const Mugs: React.FC = () => {
 					<img
 					  alt="ecommerce"
 					  className="object-cover object-center w-full h-full block"
-					  src="https://m.media-amazon.com/images/I/619ClZJd1aL._SX466_.jpg" />
+					  src="https://m.media-amazon.com/images/I/91SL25WdgyS._AC_SX569_.jpg" />
 				  </div>
 				  <div className="mt-4">
 					<h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
@@ -167,7 +167,7 @@ const Mugs: React.FC = () => {
 					<img
 					  alt="ecommerce"
 					  className="object-cover object-center w-full h-full block"
-					  src="https://m.media-amazon.com/images/I/619ClZJd1aL._SX466_.jpg" />
+					  src="https://m.media-amazon.com/images/I/91SL25WdgyS._AC_SX569_.jpg" />
 				  </div>
 				  <div className="mt-4">
 					<h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
@@ -184,7 +184,7 @@ const Mugs: React.FC = () => {
 					<img
 					  alt="ecommerce"
 					  className="object-cover object-center w-full h-full block"
-					  src="https://m.media-amazon.com/images/I/619ClZJd1aL._SX466_.jpg" />
+					  src="https://m.media-amazon.com/images/I/91SL25WdgyS._AC_SX569_.jpg" />
 				  </div>
 				  <div className="mt-4">
 					<h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
@@ -201,4 +201,4 @@ const Mugs: React.FC = () => {
 	)
 }
 
-export default Mugs;
+export default Stickers;
