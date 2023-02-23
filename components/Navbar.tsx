@@ -5,7 +5,12 @@ import {RxCross2} from 'react-icons/rx';
 import {HiPlusSm} from 'react-icons/hi';
 import {HiMinusSm} from 'react-icons/hi';
 
-const Navbar: React.FC = () => {
+type NavbarProps = {
+	cart: {itemCode: string, qty: number, price: number, size:number, variant: string}[],
+	onClearCart: () => void
+}
+
+const Navbar: React.FC<NavbarProps> = ({cart, onClearCart}) => {
 	const toggleCartRef = useRef<HTMLDivElement>(null);
 
 	function handleToggleCart() {
@@ -55,265 +60,24 @@ const Navbar: React.FC = () => {
 				<div className='text-right mb-4'>
 					<RxCross2 onClick={handleToggleCart} className='text-xl inline-block cursor-pointer' />
 				</div>
-				<div className='cart-items-list'>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
-					<div className='cart-item flex items-center justify-between'>
-						<p>This is product</p>
-						<p className='flex justify-center items-center gap-2'>
-							<HiPlusSm className='cursor-pointer' />
-							<span>1</span>
-							<HiMinusSm className='cursor-pointer' />
-						</p>
-					</div>
 
-				</div>
+				<button onClick={onClearCart}>Clear All</button>
+
+				{cart.length === 0 ? <p>No products in the cart</p>:''}
+
+				{cart.map((cartItem) => (
+					<div key={cartItem.itemCode} className='cart-items-list'>
+						<div className='cart-item flex items-center justify-between'>
+							<p>{cartItem.itemCode}</p>
+							<p className='flex justify-center items-center gap-2'>
+								<HiPlusSm className='cursor-pointer' />
+								<span>1</span>
+								<HiMinusSm className='cursor-pointer' />
+							</p>
+						</div>
+					</div>
+				))}
+
 			</div>
 		</div>
 	);
