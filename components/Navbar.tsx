@@ -13,6 +13,8 @@ type NavbarProps = {
 const Navbar: React.FC<NavbarProps> = ({cart, onClearCart}) => {
 	const toggleCartRef = useRef<HTMLDivElement>(null);
 
+	console.log(cart);
+
 	function handleToggleCart() {
 		if (toggleCartRef.current?.classList.contains('translate-x-full')) {
 			toggleCartRef.current.classList.remove('translate-x-full');
@@ -21,6 +23,15 @@ const Navbar: React.FC<NavbarProps> = ({cart, onClearCart}) => {
 			toggleCartRef.current.classList.remove('translate-x-0');
 			toggleCartRef.current.classList.add('translate-x-full');
 		}
+	}
+
+	const handleIncrementItemQuantity = () => {
+		console.log('increment quantity');
+
+	}
+
+	const handleDecrementItemQuantity = () => {
+		console.log('decrement quantity');
 	}
 
 	return (
@@ -56,7 +67,7 @@ const Navbar: React.FC<NavbarProps> = ({cart, onClearCart}) => {
 				<BsCart4 onClick={handleToggleCart} className='text-2xl cursor-pointer' />
 			</div>
 
-			<div ref={toggleCartRef} className='cart-container h-full p-2 w-72 bg-neutral-700 text-white absolute top-0 right-0 translate-x-full'>
+			<div ref={toggleCartRef} className='cart-container p-2 w-72 bg-neutral-700 text-white absolute top-0 right-0 translate-x-full'>
 				<div className='text-right mb-4'>
 					<RxCross2 onClick={handleToggleCart} className='text-xl inline-block cursor-pointer' />
 				</div>
@@ -70,9 +81,9 @@ const Navbar: React.FC<NavbarProps> = ({cart, onClearCart}) => {
 						<div className='cart-item flex items-center justify-between'>
 							<p>{cartItem.itemCode}</p>
 							<p className='flex justify-center items-center gap-2'>
-								<HiPlusSm className='cursor-pointer' />
-								<span>1</span>
-								<HiMinusSm className='cursor-pointer' />
+								<HiPlusSm className='cursor-pointer' onClick={handleIncrementItemQuantity} />
+								<span>{cartItem.qty}</span>
+								<HiMinusSm className='cursor-pointer' onClick={handleDecrementItemQuantity} />
 							</p>
 						</div>
 					</div>

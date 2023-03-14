@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 
 type ProductDetailsProps = {
-  onAddToCart: (itemCode: string, qty: number, price: number, size:number, variant: string) => void 
+  onAddToCart: (cartItem: {itemCode: string, qty: number, price: number, size:number, variant: string}) => void 
 }
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({ onAddToCart }) => {
@@ -25,7 +25,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ onAddToCart }) => {
   function handleAddToCart() {
     console.log('handleAddToCart');
 
-    onAddToCart('itemcode', 2, 123, 40, 'red');
+    onAddToCart({itemCode: 'itemcode23', qty: 1, price: 10, size: 40, variant: 'red'});
   }
 
   return (

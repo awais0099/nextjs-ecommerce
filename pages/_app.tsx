@@ -6,30 +6,62 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 
+/*const cartType = {
+	cartItems: {itemCode: string, qty: number, price: number, size:number, variant: string}[],
+	size: function() { return this.cartItems.length},
+	totalamount: function() {
+		let totalsum = 0
+		this.cartItems.forEach(function(item) {
+			totalsum = totalsum + item.price;
+		})
+		return totalsum;
+	} 
+}*/
 
 export default function App({ Component, pageProps }: AppProps) {
 
 	const [cart, setCart] = useState<
 		{itemCode: string, qty: number, price: number, size:number, variant: string}[]
-	>([{itemCode:'itemcode', qty: 2, price: 123, size: 40, variant: 'red'}]);
+	>([]);
 
 	useEffect(() => {
 		// if there are any data store and u want to load it
+		if (localStorage.getItem("cart")) {
+			try {
+				setCart(JSON.parse(localStorage.getItem("cart")));
+			} catch(error) {
+				console.log("_app:useEffect");
+				console.log(error);
+				localstorage.clear();
+			}
+		}
 	}, []);
 
-	function addToCart(itemCode: string, qty: number, price: number, size:number, variant: string) {
-	
-		const updatedcart = cart.find(item => {
-			return item.itemCode === itemCode;
-		})
+	const saveCart = (newCart) => {
+		/* storing cart or cart data in localstorage */
+		localStorage.setItem("cart", JSON.stringify(newCart));
+	}
 
-		if (Object.keys(updatedcart).length === 0) {
+	console.log({cart});
+
+	function addToCart(cartItem: {itemCode: string, qty: number, price: number, size:number, variant: string}) {
+		console.log('_app:addToCart');		
+		
+		const newCart = [...cart];
+
+		const updatedcart = newCart.findIndex(item => {
+			return item.itemCode === cartItem.itemCode;
+		});
+
+		if (updatedcart == -1) {
 			setCart((prevCart) => {
-				return [...prevCart, {itemCode, qty, price, size, variant}]
+				return [...prevCart, {...cartItem}]
 			});
 		} else {
-			console.log('item aleary');
+			newCart[updatedcart].qty = newCart[updatedcart].qty + 1;
+			setCart(newCart);
 		}
+		saveCart(newCart)
 	}
 
 	function onClearCart() {
