@@ -6,23 +6,9 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 
-/*const cartType = {
-	cartItems: {itemCode: string, qty: number, price: number, size:number, variant: string}[],
-	size: function() { return this.cartItems.length},
-	totalamount: function() {
-		let totalsum = 0
-		this.cartItems.forEach(function(item) {
-			totalsum = totalsum + item.price;
-		})
-		return totalsum;
-	} 
-}*/
-
 export default function App({ Component, pageProps }: AppProps) {
 
-	const [cart, setCart] = useState<
-		{itemCode: string, qty: number, price: number, size:number, variant: string}[]
-	>([]);
+	const [cart, setCart] = useState<{itemCode: string, qty: number, price: number, size: number, variant: string}[]>([]);
 
 	useEffect(() => {
 		// if there are any data store and u want to load it
@@ -64,6 +50,10 @@ export default function App({ Component, pageProps }: AppProps) {
 		saveCart(newCart)
 	}
 
+	function onDecrementProductQty() {
+		console.log('onDecrementProductQty');
+	}
+
 	function onClearCart() {
 		console.log('clear cart');
 		setCart([])
@@ -71,7 +61,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
   	<>
-  		<Navbar cart={cart} onClearCart={onClearCart} />
+  		<Navbar cart={cart} onClearCart={onClearCart} onAddToCart={addToCart} />
   		<Component {...pageProps} onAddToCart={addToCart} />
   		<Footer />
   	</>

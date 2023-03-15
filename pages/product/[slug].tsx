@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 
+
 type ProductDetailsProps = {
   onAddToCart: (cartItem: {itemCode: string, qty: number, price: number, size:number, variant: string}) => void 
 }

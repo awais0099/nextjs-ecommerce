@@ -7,7 +7,8 @@ import {HiMinusSm} from 'react-icons/hi';
 
 type NavbarProps = {
 	cart: {itemCode: string, qty: number, price: number, size:number, variant: string}[],
-	onClearCart: () => void
+	onClearCart: () => void,
+	onAddToCart: (cartItem: {itemCode: string, qty: number, price: number, size:number, variant: string}) => void
 }
 
 const Navbar: React.FC<NavbarProps> = ({cart, onClearCart}) => {
