@@ -6,6 +6,7 @@ type ProductDetailsProps = {
 }
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({ onAddToCart }) => {
+  
   const pincodeInputRef = useRef<HTMLInputElement | null>(null);
   const [isPincodeAvailable, setIsPincodeAvailable] = useState<boolean>(true);
 

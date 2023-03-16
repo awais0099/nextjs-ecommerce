@@ -8,10 +8,11 @@ import {HiMinusSm} from 'react-icons/hi';
 type NavbarProps = {
 	cart: {itemCode: string, qty: number, price: number, size:number, variant: string}[],
 	onClearCart: () => void,
-	onAddToCart: (cartItem: {itemCode: string, qty: number, price: number, size:number, variant: string}) => void
+	onAddToCart: (cartItem: {itemCode: string, qty: number, price: number, size:number, variant: string}) => void,
+	onDecrementProductQty: (cartItem: {itemCode: string, qty: number, price: number, size:number, variant: string}) => void
 }
 
-const Navbar: React.FC<NavbarProps> = ({cart, onClearCart}) => {
+const Navbar: React.FC<NavbarProps> = ({cart, onClearCart, onAddToCart, onDecrementProductQty}) => {
 	const toggleCartRef = useRef<HTMLDivElement>(null);
 
 	console.log(cart);
@@ -28,11 +29,12 @@ const Navbar: React.FC<NavbarProps> = ({cart, onClearCart}) => {
 
 	const handleIncrementItemQuantity = () => {
 		console.log('increment quantity');
-
+		onAddToCart({itemCode: 'itemcode23', qty: 1, price: 10, size: 40, variant: 'red'});
 	}
 
 	const handleDecrementItemQuantity = () => {
 		console.log('decrement quantity');
+		onDecrementProductQty({itemCode: 'itemcode23', qty: 1, price: 10, size: 40, variant: 'red'});
 	}
 
 	return (

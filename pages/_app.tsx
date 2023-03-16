@@ -11,7 +11,9 @@ export default function App({ Component, pageProps }: AppProps) {
 	const [cart, setCart] = useState<{itemCode: string, qty: number, price: number, size: number, variant: string}[]>([]);
 
 	useEffect(() => {
-		// if there are any data store and u want to load it
+		console.log('use eff');
+		// console.log(localStorage.getItem("cart"));
+		
 		if (localStorage.getItem("cart")) {
 			try {
 				setCart(JSON.parse(localStorage.getItem("cart")));
@@ -21,14 +23,13 @@ export default function App({ Component, pageProps }: AppProps) {
 				localstorage.clear();
 			}
 		}
+
 	}, []);
 
 	const saveCart = (newCart) => {
 		/* storing cart or cart data in localstorage */
 		localStorage.setItem("cart", JSON.stringify(newCart));
 	}
-
-	console.log({cart});
 
 	function addToCart(cartItem: {itemCode: string, qty: number, price: number, size:number, variant: string}) {
 		console.log('_app:addToCart');		
@@ -50,18 +51,35 @@ export default function App({ Component, pageProps }: AppProps) {
 		saveCart(newCart)
 	}
 
-	function onDecrementProductQty() {
+	function onDecrementProductQty(cartItem: {itemCode: string, qty: number, price: number, size:number, variant: string}) {
 		console.log('onDecrementProductQty');
+
+		const updatedcart = cart.findIndex(item => {
+			return item.itemCode === cartItem.itemCode;
+		});
+
+		if (updatedcart !== -1) {
+
+			if (cartItem.qty === 1 && Math.sign(cartItem.qty === 1) !== -1) {
+				let newCart = cart.filter(item => (item.itemCode != cartItem.itemCode));
+				setCart(newCart);
+			}
+		}
 	}
 
 	function onClearCart() {
 		console.log('clear cart');
-		setCart([])
+		setCart([]);
 	}
 
   return (
   	<>
-  		<Navbar cart={cart} onClearCart={onClearCart} onAddToCart={addToCart} />
+  		<Navbar
+  			cart={cart}
+  			onClearCart={onClearCart}
+  			onAddToCart={addToCart}
+  			onDecrementProductQty={onDecrementProductQty}
+  		/>
   		<Component {...pageProps} onAddToCart={addToCart} />
   		<Footer />
   	</>
