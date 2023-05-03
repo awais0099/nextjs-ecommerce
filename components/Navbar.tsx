@@ -5,17 +5,23 @@ import {RxCross2} from 'react-icons/rx';
 import {HiPlusSm} from 'react-icons/hi';
 import {HiMinusSm} from 'react-icons/hi';
 
+interface CartItemType { itemCode: string, qty: number, price: number, subtotal: number, size: number, variant: string }
+
+interface CartType {
+	cartItem: CartItemType[],
+	totalQuantity: number,
+	totalPrice: number
+}
+
 type NavbarProps = {
-	cart: {itemCode: string, qty: number, price: number, size:number, variant: string}[],
+	cart: CartType,
 	onClearCart: () => void,
-	onAddToCart: (cartItem: {itemCode: string, qty: number, price: number, size:number, variant: string}) => void,
-	onDecrementProductQty: (cartItem: {itemCode: string, qty: number, price: number, size:number, variant: string}) => void
+	onAddToCart: (cartItem: CartItemType) => void,
+	onDecrementProductQty: (cartItem: CartItemType) => void
 }
 
 const Navbar: React.FC<NavbarProps> = ({cart, onClearCart, onAddToCart, onDecrementProductQty}) => {
 	const toggleCartRef = useRef<HTMLDivElement>(null);
-
-	console.log(cart);
 
 	function handleToggleCart() {
 		if (toggleCartRef.current?.classList.contains('translate-x-full')) {
@@ -27,14 +33,14 @@ const Navbar: React.FC<NavbarProps> = ({cart, onClearCart, onAddToCart, onDecrem
 		}
 	}
 
-	const handleIncrementItemQuantity = () => {
+	const handleIncrementItemQuantity = (item: CartItemType) => {
 		console.log('increment quantity');
-		onAddToCart({itemCode: 'itemcode23', qty: 1, price: 10, size: 40, variant: 'red'});
+		onAddToCart(item);
 	}
 
-	const handleDecrementItemQuantity = () => {
-		console.log('decrement quantity');
-		onDecrementProductQty({itemCode: 'itemcode23', qty: 1, price: 10, size: 40, variant: 'red'});
+	const handleDecrementItemQuantity = (item: CartItemType) => {
+		console.log('decrement quantity navbar.tsx');
+		onDecrementProductQty(item);
 	}
 
 	return (
@@ -77,21 +83,23 @@ const Navbar: React.FC<NavbarProps> = ({cart, onClearCart, onAddToCart, onDecrem
 
 				<button onClick={onClearCart}>Clear All</button>
 
-				{cart.length === 0 ? <p>No products in the cart</p>:''}
+				{cart.cartItem.length === 0 ? <p>No products in the cart</p>:''}
 
-				{cart.map((cartItem) => (
-					<div key={cartItem.itemCode} className='cart-items-list'>
+				{cart.cartItem && cart.cartItem.map((cartItem) => (
+					<div key={cartItem.itemCode} className='cart-items-list my-1'>
 						<div className='cart-item flex items-center justify-between'>
 							<p>{cartItem.itemCode}</p>
 							<p className='flex justify-center items-center gap-2'>
-								<HiPlusSm className='cursor-pointer' onClick={handleIncrementItemQuantity} />
+								<HiPlusSm className='cursor-pointer' onClick={() => {handleIncrementItemQuantity(cartItem)}} />
 								<span>{cartItem.qty}</span>
-								<HiMinusSm className='cursor-pointer' onClick={handleDecrementItemQuantity} />
+								<HiMinusSm className='cursor-pointer' onClick={() => {handleDecrementItemQuantity(cartItem)}} />
 							</p>
 						</div>
 					</div>
 				))}
-
+				<hr />
+				<p className='my-1'>Total Quantity: {cart.totalQuantity}</p>
+				<p className='my-1'>Total Price: {cart.totalPrice}</p>
 			</div>
 		</div>
 	);

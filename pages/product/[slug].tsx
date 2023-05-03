@@ -1,8 +1,10 @@
 import React, { useRef, useState } from 'react';
 
 
+interface CartItemType { itemCode: string, qty: number, price: number, subtotal: number, size: number, variant: string }
+
 type ProductDetailsProps = {
-  onAddToCart: (cartItem: {itemCode: string, qty: number, price: number, size:number, variant: string}) => void 
+  onAddToCart: (cartItem: CartItemType) => void 
 }
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({ onAddToCart }) => {
@@ -23,11 +25,9 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ onAddToCart }) => {
     // console.log(result);
   }
 
-
   function handleAddToCart() {
     console.log('handleAddToCart');
-
-    onAddToCart({itemCode: 'itemcode23', qty: 1, price: 10, size: 40, variant: 'red'});
+    onAddToCart({itemCode: 'itemcode03', qty: 1, price: 10, subtotal: 10, size: 40, variant: 'red'});
   }
 
   return (
