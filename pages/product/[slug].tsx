@@ -3,13 +3,22 @@ import React, { useRef, useState } from 'react';
 
 interface CartItemType { itemCode: string, qty: number, price: number, subtotal: number, size: number, variant: string }
 
-type ProductDetailsProps = {
+interface CartType {
+  cartItem: CartItemType[],
+  totalQuantity: number,
+  totalPrice: number
+}
+
+
+type DetailsProps = {
   onAddToCart: (cartItem: CartItemType) => void 
 }
+
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({ onAddToCart }) => {
   
   const pincodeInputRef = useRef<HTMLInputElement | null>(null);
+  
   const [isPincodeAvailable, setIsPincodeAvailable] = useState<boolean>(true);
 
   async function handleSubmitPincode() {

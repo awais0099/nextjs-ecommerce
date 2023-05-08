@@ -149,7 +149,13 @@ export default function App({ Component, pageProps }: AppProps) {
 				onAddToCart={addToCart}
 				onDecrementProductQty={decrementProductQtyHandler}
 			/>
-			<Component {...pageProps} onAddToCart={addToCart} />
+			<Component
+				{...pageProps}
+				cart={cart}
+				onClearCart={onClearCart}
+				onAddToCart={addToCart}
+				onDecrementProductQty={decrementProductQtyHandler}
+			/>
 			<Footer />
 		</>
 	);

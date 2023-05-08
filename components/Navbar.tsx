@@ -83,7 +83,7 @@ const Navbar: React.FC<NavbarProps> = ({cart, onClearCart, onAddToCart, onDecrem
 
 				<button onClick={onClearCart}>Clear All</button>
 
-				{cart.cartItem.length === 0 ? <p>No products in the cart</p>:''}
+				{cart.cartItem && cart.cartItem.length === 0 ? <p>No products in the cart</p>:''}
 
 				{cart.cartItem && cart.cartItem.map((cartItem) => (
 					<div key={cartItem.itemCode} className='cart-items-list my-1'>
