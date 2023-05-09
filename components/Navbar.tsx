@@ -24,12 +24,12 @@ const Navbar: React.FC<NavbarProps> = ({cart, onClearCart, onAddToCart, onDecrem
 	const toggleCartRef = useRef<HTMLDivElement>(null);
 
 	function handleToggleCart() {
-		if (toggleCartRef.current?.classList.contains('translate-x-full')) {
-			toggleCartRef.current.classList.remove('translate-x-full');
-			toggleCartRef.current.classList.add('translate-x-0');
-		} else if (toggleCartRef.current?.classList.contains('translate-x-0')) {
-			toggleCartRef.current.classList.remove('translate-x-0');
-			toggleCartRef.current.classList.add('translate-x-full');
+		if (toggleCartRef.current?.classList.contains('hidden')) {
+			toggleCartRef.current.classList.remove('hidden');
+			toggleCartRef.current.classList.add('block');
+		} else if (toggleCartRef.current?.classList.contains('block')) {
+			toggleCartRef.current.classList.remove('block');
+			toggleCartRef.current.classList.add('hidden');
 		}
 	}
 
@@ -76,7 +76,7 @@ const Navbar: React.FC<NavbarProps> = ({cart, onClearCart, onAddToCart, onDecrem
 				<BsCart4 onClick={handleToggleCart} className='text-2xl cursor-pointer' />
 			</div>
 
-			<div ref={toggleCartRef} className='cart-container p-2 w-72 bg-neutral-700 text-white absolute top-0 right-0 translate-x-full'>
+			<div ref={toggleCartRef} className='cart-container z-[1] p-2 w-72 bg-neutral-700 text-white absolute top-0 right-0 hidden'>
 				<div className='text-right mb-4'>
 					<RxCross2 onClick={handleToggleCart} className='text-xl inline-block cursor-pointer' />
 				</div>
@@ -100,6 +100,7 @@ const Navbar: React.FC<NavbarProps> = ({cart, onClearCart, onAddToCart, onDecrem
 				<hr />
 				<p className='my-1'>Total Quantity: {cart.totalQuantity}</p>
 				<p className='my-1'>Total Price: {cart.totalPrice}</p>
+				<Link href='/checkout' className="inline-flex items-center h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">Checkout</Link>
 			</div>
 		</div>
 	);

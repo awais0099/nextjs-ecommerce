@@ -76,7 +76,7 @@ export default function App({ Component, pageProps }: AppProps) {
 				console.log("tqsum", tqsum);
 				tempCart.totalPrice = tpsum;
 				tempCart.totalQuantity = tqsum;
-
+				saveCart({ ...tempCart });
 				return { ...tempCart };
 			});
 		} else {
@@ -93,9 +93,10 @@ export default function App({ Component, pageProps }: AppProps) {
 
 			newCart.totalQuantity = tqsum;
 			newCart.totalPrice = tpsum;
+
+			saveCart({ ...newCart });
 			setCart({ ...newCart });
 		}
-		saveCart({ ...newCart })
 	}
 
 	function decrementProductQtyHandler(cartItem: CartItemType) {

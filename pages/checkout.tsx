@@ -29,6 +29,16 @@ const Checkout: React.FC<CheckoutProps> = ({cart, onClearCart, onAddToCart, onDe
 	console.log("checkout.tsx");
 	console.log(cart);
 
+	const handleIncrementItemQuantity = (item: CartItemType) => {
+		console.log('increment quantity');
+		onAddToCart(item);
+	}
+
+	const handleDecrementItemQuantity = (item: CartItemType) => {
+		console.log('decrement quantity navbar.tsx');
+		onDecrementProductQty(item);
+	}
+
 	return (
 		<div className="container m-auto">
 			<h1 className="font-bold text-xl my-8 text-center">Checkout</h1>
@@ -36,7 +46,7 @@ const Checkout: React.FC<CheckoutProps> = ({cart, onClearCart, onAddToCart, onDe
 			<div className="mx-auto flex">
 				<div className="px-2 w-1/2">
 					<div className="mb-4">
-				        <label for="name" className="leading-7 text-sm text-gray-600">Name</label>
+				        <label htmlFor="name" className="leading-7 text-sm text-gray-600">Name</label>
 				        <input
 				        	type="text"
 				        	id="name"
@@ -47,7 +57,7 @@ const Checkout: React.FC<CheckoutProps> = ({cart, onClearCart, onAddToCart, onDe
 
 				<div className="px-2 w-1/2">
 					<div className="mb-4">
-				        <label for="email" className="leading-7 text-sm text-gray-600">Email</label>
+				        <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
 				        <input
 				        	type="email"
 				        	id="email"
@@ -58,7 +68,7 @@ const Checkout: React.FC<CheckoutProps> = ({cart, onClearCart, onAddToCart, onDe
 			</div>
 			<div className="px-2 w-full">
 					<div className="mb-4">
-				        <label for="address" className="leading-7 text-sm text-gray-600">Address</label>
+				        <label htmlFor="address" className="leading-7 text-sm text-gray-600">Address</label>
 				        <textarea name="address" id="address" cols="30" rows="2"
 				        	className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
 				        ></textarea>
@@ -68,7 +78,7 @@ const Checkout: React.FC<CheckoutProps> = ({cart, onClearCart, onAddToCart, onDe
 			<div className="mx-auto flex">
 				<div className="px-2 w-1/2">
 					<div className="mb-4">
-				        <label for="phone" className="leading-7 text-sm text-gray-600">Phone</label>
+				        <label htmlFor="phone" className="leading-7 text-sm text-gray-600">Phone</label>
 				        <input
 				        	type="phone"
 				        	id="phone"
@@ -79,7 +89,7 @@ const Checkout: React.FC<CheckoutProps> = ({cart, onClearCart, onAddToCart, onDe
 
 				<div className="px-2 w-1/2">
 					<div className="mb-4">
-				        <label for="city" className="leading-7 text-sm text-gray-600">City</label>
+				        <label htmlFor="city" className="leading-7 text-sm text-gray-600">City</label>
 				        <input
 				        	type="text"
 				        	id="city"
@@ -93,7 +103,7 @@ const Checkout: React.FC<CheckoutProps> = ({cart, onClearCart, onAddToCart, onDe
 			<div className="mx-auto flex">
 				<div className="px-2 w-1/2">
 					<div className="mb-4">
-				        <label for="state" className="leading-7 text-sm text-gray-600">State</label>
+				        <label htmlFor="state" className="leading-7 text-sm text-gray-600">State</label>
 				        <input
 				        	type="text"
 				        	id="state"
@@ -104,7 +114,7 @@ const Checkout: React.FC<CheckoutProps> = ({cart, onClearCart, onAddToCart, onDe
 
 				<div className="px-2 w-1/2">
 					<div className="mb-4">
-				        <label for="pincode" className="leading-7 text-sm text-gray-600">Pincode</label>
+				        <label htmlFor="pincode" className="leading-7 text-sm text-gray-600">Pincode</label>
 				        <input
 				        	type="text"
 				        	id="pincode"
@@ -115,30 +125,27 @@ const Checkout: React.FC<CheckoutProps> = ({cart, onClearCart, onAddToCart, onDe
 			</div>
 			<h2 className="font-semibold text-xl">3. Review Cart</h2>
 
-			<div className='cart-container p-2 w-72 bg-neutral-700 text-white absolute top-0 right-0 translate-x-full'>
-				<div className='text-right mb-4'>
-					<RxCross2 onClick='' className='text-xl inline-block cursor-pointer' />
-				</div>
-
-				<button onClick=''>Clear All</button>
+			<div className='bg-teal-100 p-4'>
+				
+				<button onClick={onClearCart} className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Clear All</button>
 
 				{cart.cartItem && cart.cartItem.length === 0 ? <p>No products in the cart</p>:''}
 
-				{cart.cartItem && cart.cartItem.map((cartItem) => (
-					<div key={cartItem.itemCode} className='cart-items-list my-1'>
-						<div className='cart-item flex items-center justify-between'>
+				{cart.cartItem.map((cartItem) => (
+					<div key={cartItem.itemCode} className='cart-items-list my-1 bg-teal-500 py-1 px-2'>
+						<div className='cart-item flex justify-between text-teal-800'>
 							<p>{cartItem.itemCode}</p>
 							<p className='flex justify-center items-center gap-2'>
-								<HiPlusSm className='cursor-pointer' onClick={() => {}} />
-								<span>{cartItem.qty}</span>
-								<HiMinusSm className='cursor-pointer' onClick={() => {}} />
+								<HiPlusSm className='cursor-pointer font-bold bg-teal-100' onClick={() => {handleIncrementItemQuantity(cartItem)}} />
+								<span className="text-teal-100">{cartItem.qty}</span>
+								<HiMinusSm className='cursor-pointer font-bold bg-teal-100' onClick={() => {handleDecrementItemQuantity(cartItem)}} />
 							</p>
 						</div>
 					</div>
 				))}
 				<hr />
-				<p className='my-1'>Total Quantity: {cart.totalQuantity}</p>
-				<p className='my-1'>Total Price: {cart.totalPrice}</p>
+				<p className='my-1 font-semibold'>Total Quantity: {cart.totalQuantity}</p>
+				<p className='my-1 font-semibold'>Total Price: {cart.totalPrice}</p>
 			</div>
 		</div>
 	)
