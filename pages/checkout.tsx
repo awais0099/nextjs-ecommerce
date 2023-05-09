@@ -1,5 +1,4 @@
 import React from 'react';
-import {RxCross2} from 'react-icons/rx';
 import {HiPlusSm} from 'react-icons/hi';
 import {HiMinusSm} from 'react-icons/hi';
 
@@ -69,7 +68,7 @@ const Checkout: React.FC<CheckoutProps> = ({cart, onClearCart, onAddToCart, onDe
 			<div className="px-2 w-full">
 					<div className="mb-4">
 				        <label htmlFor="address" className="leading-7 text-sm text-gray-600">Address</label>
-				        <textarea name="address" id="address" cols="30" rows="2"
+				        <textarea name="address" id="address" cols={30} rows={2}
 				        	className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
 				        ></textarea>
 			      	</div>
@@ -134,7 +133,7 @@ const Checkout: React.FC<CheckoutProps> = ({cart, onClearCart, onAddToCart, onDe
 				{cart.cartItem.map((cartItem) => (
 					<div key={cartItem.itemCode} className='cart-items-list my-1 bg-teal-500 py-1 px-2'>
 						<div className='cart-item flex justify-between text-teal-800'>
-							<p>{cartItem.itemCode}</p>
+							<p className='text-teal-100'>{cartItem.itemCode}</p>
 							<p className='flex justify-center items-center gap-2'>
 								<HiPlusSm className='cursor-pointer font-bold bg-teal-100' onClick={() => {handleIncrementItemQuantity(cartItem)}} />
 								<span className="text-teal-100">{cartItem.qty}</span>

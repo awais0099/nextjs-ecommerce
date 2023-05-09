@@ -4,6 +4,7 @@ import Link from 'next/link';
 import {RxCross2} from 'react-icons/rx';
 import {HiPlusSm} from 'react-icons/hi';
 import {HiMinusSm} from 'react-icons/hi';
+import {BiUser} from 'react-icons/bi';
 
 interface CartItemType { itemCode: string, qty: number, price: number, subtotal: number, size: number, variant: string }
 
@@ -72,8 +73,15 @@ const Navbar: React.FC<NavbarProps> = ({cart, onClearCart, onAddToCart, onDecrem
 					</li>
 				</ul>
 			</div>
-			<div className='cart'>
+			<div className='cart flex gap-3 relative'>
+				<BiUser className='text-2xl cursor-pointer' />
 				<BsCart4 onClick={handleToggleCart} className='text-2xl cursor-pointer' />
+				<div className='absolute top-7 right-14 w-20 bg-red-600'>
+					<ul className='text-center'>
+						<li className='py-1 bg-red-100'>orders</li>
+						<li className='py-1'>logout</li>
+					</ul>
+				</div>
 			</div>
 
 			<div ref={toggleCartRef} className='cart-container z-[1] p-2 w-72 bg-neutral-700 text-white absolute top-0 right-0 hidden'>
