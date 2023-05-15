@@ -19,4 +19,5 @@ const OrderSchema = new mongoose.Schema<IOrder>({
     status: { type: String, default: 'Pending', required: true}
 }, { timestamps: true });
 
-export default mongoose.model("Order", OrderSchema);
+const Order = mongoose.models.Order || mongoose.model("Order", OrderSchema); 
+export default Order;
